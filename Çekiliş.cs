@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Random = System.Random;
 using Rocket.API;
 using Rocket.API.Collections;
 using Rocket.Core.Plugins;
@@ -11,7 +12,6 @@ using Rocket.Unturned.Player;
 using SDG.Unturned;
 using Steamworks;
 using UnityEngine;
-using Random = System.Random;
 
 namespace DaeCekilis
 {
@@ -121,7 +121,7 @@ namespace DaeCekilis
             {
                 UnturnedChat.Say(Translate("KalanSüre", kalanSüre));
 
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(1f);
             }
 
             var çekilişeKatılabilecekler = Provider.clients.Where(s => !KaraListedekiler.Contains(s.playerID.steamID)).ToList();

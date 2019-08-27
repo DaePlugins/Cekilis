@@ -34,7 +34,7 @@ namespace DaeCekilis
             }
 
             var parametre = parametreler[0].ToLower();
-            if (parametre == "s" || parametre == "sıfırla" || parametre == "sifirla")
+            if (parametre == "s")
             {
                 Çekiliş.Örnek.KaraListedekiler.Clear();
 
