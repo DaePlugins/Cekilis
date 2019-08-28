@@ -3,6 +3,7 @@ using System.Linq;
 using Rocket.API;
 using Rocket.Unturned.Chat;
 using Rocket.Unturned.Player;
+using SDG.Unturned;
 using UnityEngine;
 
 namespace DaeCekilis
@@ -37,6 +38,14 @@ namespace DaeCekilis
             if (parametre == "s")
             {
                 Çekiliş.Örnek.KaraListedekiler.Clear();
+
+                if (Çekiliş.Örnek.Configuration.Instance.YetkililerKatılamaz)
+                {
+                    Çekiliş.Örnek.KaraListedekiler = Provider.clients
+                        .Where(s => UnturnedPlayer.FromSteamPlayer(s).HasPermission($"dae.cekilis.{Çekiliş.Örnek.Configuration.Instance.Yetkili}"))
+                        .Select(s => s.playerID.steamID)
+                        .ToList();
+                }
 
                 UnturnedChat.Say(komutuÇalıştıran, Çekiliş.Örnek.Translate("KaraListeSıfırlandı"));
                 return;
