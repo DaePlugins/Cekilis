@@ -37,14 +37,13 @@ namespace DaeCekilis
             var parametre = parametreler[0].ToLower();
             if (parametre == "s")
             {
-                Çekiliş.Örnek.KaraListedekiler.Clear();
-
                 if (Çekiliş.Örnek.Configuration.Instance.YetkililerKatılamaz)
                 {
-                    Çekiliş.Örnek.KaraListedekiler = Provider.clients
-                        .Where(s => UnturnedPlayer.FromSteamPlayer(s).HasPermission($"dae.cekilis.{Çekiliş.Örnek.Configuration.Instance.Yetkili}"))
-                        .Select(s => s.playerID.steamID)
-                        .ToList();
+                    Çekiliş.Örnek.KaraListedekiler.RemoveAll(o => !UnturnedPlayer.FromCSteamID(o).HasPermission($"dae.cekilis.{Çekiliş.Örnek.Configuration.Instance.Yetkili}"));
+                }
+                else
+                {
+                    Çekiliş.Örnek.KaraListedekiler.Clear();
                 }
 
                 UnturnedChat.Say(komutuÇalıştıran, Çekiliş.Örnek.Translate("KaraListeSıfırlandı"));

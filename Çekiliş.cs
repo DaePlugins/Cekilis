@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Random = System.Random;
 using Rocket.API;
 using Rocket.API.Collections;
 using Rocket.Core.Plugins;
@@ -51,6 +50,7 @@ namespace DaeCekilis
             if (_çekilişVar)
             {
                 StopAllCoroutines();
+                _çekilişVar = false;
             }
 
             KaraListedekiler.Clear();
@@ -125,7 +125,7 @@ namespace DaeCekilis
             }
 
             var çekilişeKatılabilecekler = Provider.clients.Where(s => !KaraListedekiler.Contains(s.playerID.steamID)).ToList();
-            var kazanan = UnturnedPlayer.FromSteamPlayer(çekilişeKatılabilecekler[new Random().Next(0, çekilişeKatılabilecekler.Count)]);
+            var kazanan = UnturnedPlayer.FromSteamPlayer(çekilişeKatılabilecekler[Random.Range(0, çekilişeKatılabilecekler.Count)]);
 
             for (byte mesajSayısı = 0; mesajSayısı < _yollanacakMesajSayısı; mesajSayısı++)
             {
