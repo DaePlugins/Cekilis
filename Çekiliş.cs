@@ -95,7 +95,7 @@ namespace DaeCekilis
                 UnturnedChat.Say(komutuÇalıştıran, Translate("ZatenÇekilişVar"), Color.red);
                 return;
             }
-			
+            
             if (Configuration.Instance.ÇekilişİçinMinimumOyuncu > Provider.clients.Count - KaraListedekiler.Count)
             {
                 UnturnedChat.Say(komutuÇalıştıran, Translate("YetersizOyuncu", Configuration.Instance.ÇekilişİçinMinimumOyuncu - Provider.clients.Count - KaraListedekiler.Count), Color.red);
